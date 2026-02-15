@@ -8,15 +8,17 @@ use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\PublicServiceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\DashboardController;
 
-// ... (other use statements)
-
-Route::get('/', function () {
-    return redirect()->route('dashboard');
-});
+// Public Routes
+Route::get('/', [LandingController::class, 'index'])->name('landing');
+Route::get('/tentang', [LandingController::class, 'about'])->name('landing.about');
+Route::get('/layanan', [LandingController::class, 'services'])->name('landing.services');
+Route::get('/sambutan', [LandingController::class, 'sambutan'])->name('landing.sambutan');
+Route::get('/kontak', [LandingController::class, 'contact'])->name('landing.contact');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
