@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Styles for Glassmorphism & Details */
+@layer utilities {
+    .glass-panel {
+        @apply bg-white/85 dark:bg-[#14182F]/85 border border-white/50 dark:border-[#6b44ff]/20 backdrop-blur-md;
+    }
+
+    .text-gradient {
+        background: linear-gradient(135deg, #2c04b3 0%, #4a20d6 50%, #6b44ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .dark .text-gradient {
+        background: linear-gradient(135deg, #6b44ff 0%, #9370ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #2c04b3 0%, #4a20d6 50%, #6b44ff 100%);
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+}
+
+/* Sidebar transition */
+.sidebar-transition {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animation */
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+}
