@@ -31,9 +31,9 @@
     <header class="bg-white sticky top-0 z-50 shadow-sm font-sans" x-data="{ searchOpen: false, navOpen: false }">
         <!-- Top Row: Logos & Utilities -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+            <div class="flex flex-row items-center justify-between gap-4">
                 <!-- Left: Logos -->
-                <div class="flex items-center gap-6 self-start lg:self-center">
+                <div class="flex items-center gap-6">
                     <!-- Main Logo -->
                     <a href="{{ route('landing') }}" class="flex items-center gap-3">
                         <img src="https://disdik.tulungagung.go.id/wp-content/uploads/2022/01/logo-kominfo.png" alt="Logo Kominfo" class="h-10 lg:h-12 w-auto">
@@ -48,15 +48,15 @@
 
                     <!-- Partner Logos -->
                     <div class="hidden md:flex items-center gap-4 opacity-90">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Logo_BerAKHLAK.png/800px-Logo_BerAKHLAK.png" alt="BerAKHLAK" class="h-8 w-auto">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Bangga_Melayani_Bangsa.png" alt="Bangga Melayani Bangsa" class="h-8 w-auto">
+                        <img src="{{asset('berakhlak.png')}}" alt="BerAKHLAK" class="h-8 w-auto">
+                        <img src="{{asset('melayani.png')}}" alt="Bangga Melayani Bangsa" class="h-8 w-auto">
                     </div>
                 </div>
 
                 <!-- Right: Search & Tools -->
-                <div class="flex items-center gap-4 w-full lg:w-auto mt-2 lg:mt-0">
+                <div class="flex items-center gap-4">
                     <!-- Search Bar -->
-                    <div class="relative w-full lg:w-[400px]">
+                    <div class="relative hidden lg:block w-[400px]">
                         <iconify-icon icon="solar:magnifer-linear" class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold" width="18"></iconify-icon>
                         <input type="text" placeholder="Cari berita dan layanan Kominfo..." class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all">
                     </div>

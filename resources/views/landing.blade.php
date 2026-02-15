@@ -213,7 +213,7 @@
                      <div class="group relative bg-[#1E3A8A] min-w-[280px] lg:min-w-0 snap-center hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-800 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden border border-white/5 hover:shadow-xl hover:shadow-blue-900/50">
                         <div class="relative z-10 h-full flex flex-col justify-between min-h-[280px]">
                             <div class="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
-                                <iconify-icon icon="solar:mortarboard-bold" width="32"></iconify-icon>
+                                <iconify-icon icon="fluent:hat-graduation-28-filled" width="32"></iconify-icon>
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-white mb-2 tracking-wide uppercase">Pengembangan SDM</h3>
