@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 // Public Routes
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 Route::get('/tentang', [LandingController::class, 'about'])->name('landing.about');
+Route::get('/pejabat', [LandingController::class, 'pejabat'])->name('landing.pejabat');
+Route::get('/pejabat/{slug}', [LandingController::class, 'pejabatDetail'])->name('landing.pejabat.detail');
 Route::get('/layanan', [LandingController::class, 'services'])->name('landing.services');
 Route::get('/sambutan', [LandingController::class, 'sambutan'])->name('landing.sambutan');
 Route::get('/kontak', [LandingController::class, 'contact'])->name('landing.contact');

@@ -20,8 +20,10 @@ class EmployeeController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $editUrl = route('employees.edit', $row->id);
-                    $btn = '<a href="'.$editUrl.'" class="inline-flex items-center gap-2 px-3 py-2 bg-amber-50 text-amber-600 hover:bg-amber-100 rounded-lg transition-colors mr-1" title="Edit"><iconify-icon icon="solar:pen-new-square-linear"></iconify-icon> Edit</a>';
-                    $btn .= '<button onclick="deleteItem('.$row->id.')" class="inline-flex items-center gap-2 px-3 py-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg transition-colors" title="Hapus"><iconify-icon icon="solar:trash-bin-trash-linear"></iconify-icon> Hapus</button>';
+                    $showUrl = route('employees.show', $row->id);
+                    $btn = '<a href="'.$showUrl.'" class="inline-flex items-center gap-2 px-3 py-2 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors mr-1" title="Detail"><iconify-icon icon="solar:eye-linear"></iconify-icon></a>';
+                    $btn .= '<a href="'.$editUrl.'" class="inline-flex items-center gap-2 px-3 py-2 bg-amber-50 text-amber-600 hover:bg-amber-100 rounded-lg transition-colors mr-1" title="Edit"><iconify-icon icon="solar:pen-new-square-linear"></iconify-icon></a>';
+                    $btn .= '<button onclick="deleteItem('.$row->id.')" class="inline-flex items-center gap-2 px-3 py-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg transition-colors" title="Hapus"><iconify-icon icon="solar:trash-bin-trash-linear"></iconify-icon></button>';
                     return $btn;
                 })
                 ->addColumn('avatar_view', function($row){
@@ -61,9 +63,12 @@ class EmployeeController extends Controller
             'name' => 'required|string|max:255',
             'nip' => 'nullable|string|max:255',
             'position' => 'required|string',
-            'type' => 'required|string',
+            'employee_type' => 'required|string',
             'status' => 'required|string',
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'education_history' => 'nullable|array',
+            'job_history' => 'nullable|array',
+            'social_media' => 'nullable|array',
         ]);
 
         $data = $request->all();
@@ -81,9 +86,10 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Employee $employee)
+    public function show($id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        return view('employees.show', compact('employee'));
     }
 
     /**
@@ -104,9 +110,12 @@ class EmployeeController extends Controller
             'name' => 'required|string|max:255',
             'nip' => 'nullable|string|max:255',
             'position' => 'required|string',
-            'type' => 'required|string',
+            'employee_type' => 'required|string',
             'status' => 'required|string',
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'education_history' => 'nullable|array',
+            'job_history' => 'nullable|array',
+            'social_media' => 'nullable|array',
         ]);
 
         $employee = Employee::findOrFail($id);

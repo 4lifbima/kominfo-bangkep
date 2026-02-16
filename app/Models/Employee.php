@@ -16,5 +16,14 @@ class Employee extends Model
         'type', // PNS, PPPK, Honorer
         'status', // active, inactive
         'avatar',
+        'education_history',
+        'job_history',
+        'social_media',
+    ];
+
+    protected $casts = [
+        'education_history' => 'array',
+        'job_history' => 'array',
+        'social_media' => 'array',
     ];
 }

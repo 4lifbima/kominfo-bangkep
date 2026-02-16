@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('type'); // PNS, PPPK, Honorer
             $table->string('status')->default('active');
             $table->string('avatar')->nullable();
+            $table->json('education_history')->nullable(); // Riwayat Pendidikan: [{school, year, degree}, ...]
+            $table->json('job_history')->nullable(); // Riwayat Jabatan: [{position, institution, year}, ...]
+            $table->json('social_media')->nullable(); // Social Media: {facebook, instagram, twitter, linkedin}
             $table->timestamps();
         });
     }

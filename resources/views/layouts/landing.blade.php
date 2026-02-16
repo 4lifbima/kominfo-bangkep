@@ -95,10 +95,22 @@
                         </a>
                         <!-- Mega Menu / Dropdown can be added here -->
                     </li>
-                    <li class="group relative">
-                        <a href="{{ route('landing.about') }}" class="flex items-center gap-1 py-4 hover:text-primary border-b-2 {{ request()->routeIs('landing.about') ? 'border-primary text-primary' : 'border-transparent' }} transition-all">
+                    <li class="group relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <a href="#" class="flex items-center gap-1 py-4 hover:text-primary border-b-2 {{ request()->routeIs('landing.about') || request()->routeIs('landing.pejabat') ? 'border-primary text-primary' : 'border-transparent' }} transition-all">
                             Profil <iconify-icon icon="solar:alt-arrow-down-linear" width="12"></iconify-icon>
                         </a>
+                        <!-- Dropdown -->
+                        <div x-show="open" 
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 translate-y-2"
+                             x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 translate-y-0"
+                             x-transition:leave-end="opacity-0 translate-y-2"
+                             class="absolute top-full left-0 w-48 bg-white border border-slate-100 shadow-lg rounded-xl overflow-hidden z-50">
+                            <a href="{{ route('landing.about') }}" class="block px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-primary transition-colors">Tentang Kami</a>
+                            <a href="{{ route('landing.pejabat') }}" class="block px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-primary transition-colors">Pejabat Dinas</a>
+                        </div>
                     </li>
                     <li class="group relative">
                          <a href="#" class="flex items-center gap-1 py-4 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all">
@@ -138,7 +150,8 @@
         <div x-show="navOpen" x-transition class="lg:hidden border-t border-slate-100 bg-white shadow-lg overflow-y-auto max-h-[80vh]">
             <ul class="flex flex-col text-slate-700 font-medium">
                 <li><a href="{{ route('landing') }}" class="block px-6 py-3 hover:bg-slate-50 border-l-4 {{ request()->routeIs('landing') ? 'border-primary text-primary bg-primary/5' : 'border-transparent' }}">Beranda</a></li>
-                <li><a href="{{ route('landing.about') }}" class="block px-6 py-3 hover:bg-slate-50 border-l-4 {{ request()->routeIs('landing.about') ? 'border-primary text-primary bg-primary/5' : 'border-transparent' }}">Profil</a></li>
+                <li><a href="{{ route('landing.about') }}" class="block px-6 py-3 hover:bg-slate-50 border-l-4 {{ request()->routeIs('landing.about') ? 'border-primary text-primary bg-primary/5' : 'border-transparent' }}">Tentang Kami</a></li>
+                <li><a href="{{ route('landing.pejabat') }}" class="block px-6 py-3 hover:bg-slate-50 border-l-4 {{ request()->routeIs('landing.pejabat') ? 'border-primary text-primary bg-primary/5' : 'border-transparent' }}">Pejabat</a></li>
                 <li><a href="{{ route('landing.services') }}" class="block px-6 py-3 hover:bg-slate-50 border-l-4 {{ request()->routeIs('landing.services') ? 'border-primary text-primary bg-primary/5' : 'border-transparent' }}">Layanan</a></li>
                 <li><a href="{{ route('landing.contact') }}" class="block px-6 py-3 hover:bg-slate-50 border-l-4 {{ request()->routeIs('landing.contact') ? 'border-primary text-primary bg-primary/5' : 'border-transparent' }}">Kontak / Pengaduan</a></li>
                 <li class="border-t border-slate-100 mt-2 p-4">
@@ -178,6 +191,7 @@
                     <ul class="space-y-2 text-sm">
                         <li><a href="{{ route('landing') }}" class="hover:text-primary transition-colors">Beranda</a></li>
                         <li><a href="{{ route('landing.about') }}" class="hover:text-primary transition-colors">Tentang Kami</a></li>
+                        <li><a href="{{ route('landing.pejabat') }}" class="hover:text-primary transition-colors">Pejabat</a></li>
                         <li><a href="{{ route('landing.services') }}" class="hover:text-primary transition-colors">Layanan Publik</a></li>
                         <li><a href="{{ route('landing.contact') }}" class="hover:text-primary transition-colors">Hubungi Kami</a></li>
                     </ul>
